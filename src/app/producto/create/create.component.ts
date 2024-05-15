@@ -65,7 +65,6 @@ export class CreateComponentProducto {
     const file: File = event.target.files[0];
     this.selectedFile = file;
 
-    // Mostrar vista previa de la imagen
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = (_event) => {
