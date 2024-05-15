@@ -1,17 +1,18 @@
-
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+     
 import {  Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Talla } from './talla';
+  
+import { Producto } from './producto';
   
 @Injectable({
   providedIn: 'root'
 })
-export class TallaService{
+export class ProductoService{
 
   
-    private apiURL = "http://localhost:8092/talla/";
+    private apiURL = "http://localhost:8092/producto/";
     
  
     httpOptions = {
@@ -23,7 +24,7 @@ export class TallaService{
  
     constructor(private httpClient: HttpClient) { }
       
-    
+
     getAll(): Observable<any> {
       const token=localStorage.getItem('token');
       console.log(token);
@@ -36,42 +37,41 @@ export class TallaService{
       )
     }
 
-    status(idtalla:number){
+    status(idprod:number){
       const token=localStorage.getItem('token');
       console.log(token);
       const headers=new HttpHeaders({
         'Authorization':`${token}`
       });
-      return this.httpClient.delete(this.apiURL + 'status/' + idtalla ,{headers:headers})
+      return this.httpClient.delete(this.apiURL + 'status/' + idprod ,{headers:headers})
     
       .pipe(
         catchError(this.errorHandler)
       )
     }
 
-    save(talla:Talla): Observable<any> {
+    save(producto:Producto): Observable<any> {
       const token=localStorage.getItem('token');
       console.log(token);
       const headers = new HttpHeaders({
         'Authorization': `${token}`,
         'Content-Type': 'application/json' 
       });
-      return this.httpClient.post(this.apiURL + 'save', JSON.stringify(talla), {headers:headers})
+      return this.httpClient.post(this.apiURL + 'save', JSON.stringify(producto), {headers:headers})
    
       .pipe( 
         catchError(this.errorHandler)
       )
     }
 
-     
-    find(idtalla:number): Observable<any> {
+    find(idprod:number): Observable<any> {
       const token=localStorage.getItem('token');
       console.log(token);
       const headers = new HttpHeaders({
         'Authorization': `${token}`,
         'Content-Type': 'application/json' 
       });
-      return this.httpClient.get(this.apiURL + 'encontrar/' + idtalla, {headers:headers})
+      return this.httpClient.get(this.apiURL + 'encontrar/' + idprod, {headers:headers})
     
       .pipe(
         catchError(this.errorHandler)

@@ -2,7 +2,7 @@ import { Color } from "../color/color";
 import { Talla } from "../talla/talla"
 
 export interface Producto{
-    idprod      :   number;
+    idpro       :   number;
     codbar      :   string;
     imagen      :   string;
     nompro      :   string;

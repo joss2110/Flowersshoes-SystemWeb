@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { ColorService } from '../color.service';
-import { Color } from '../color';
+import { TallaService } from '../talla.service';
+import { Talla } from '../talla';
 import { HeaderComponent } from '../../pages/header/header.component';
 
 @Component({
@@ -13,12 +13,12 @@ import { HeaderComponent } from '../../pages/header/header.component';
   templateUrl: './listado.component.html',
   styleUrls: ['./listado.component.css','../../app.component.css']
 })
-export class ListadoComponentColor {
+export class ListadoComponentTalla {
 
-  colors: Color[] = [];
+  tallas: Talla[] = [];
     
   
-  constructor(public colorService: ColorService, private router: Router) { }
+  constructor(public tallaService: TallaService, private router: Router) { }
     
   /**
    * Write code on Method
@@ -26,9 +26,8 @@ export class ListadoComponentColor {
    * @return response()
    */
   ngOnInit(): void {
-    this.colorService.getAll().subscribe((data: Color[])=>{
-      this.colors = data;
-      console.log(this.colors);
+    this.tallaService.getAll().subscribe((data: Talla[])=>{
+      this.tallas = data;
     })  
   }
 
@@ -38,20 +37,20 @@ export class ListadoComponentColor {
    * @return response()
    */
 
-  deleteColor(idcolor:number){
-    this.colorService.status(idcolor).subscribe(res => {
+  deleteTalla(idtalla:number){
+    this.tallaService.status(idtalla).subscribe(res => {
       this.loadData();
-      console.log('Color Eliminado Correctamente');
+      console.log('talla Eliminada Correctamente');
     })
   }
 
   loadData() {
-    this.colorService.getAll().subscribe(
+    this.tallaService.getAll().subscribe(
       (data) => {
-        this.colors = data;
+        this.tallas = data;
       },
       (error) => {
-        console.error('Error al cargar los colores:', error);
+        console.error('Error al cargar las tallas:', error);
       }
     );
   }

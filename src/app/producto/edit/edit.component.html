@@ -1,0 +1,89 @@
+<div class="container">
+    <h3 class="text-center mt-5 pb-4 mb-4 border-bottom">Mantenimiento</h3>
+
+    <div class="d-flex justify-content-between align-items-center  pb-4 mb-4 border-bottom">
+        <button href="#" [routerLink]="['/producto/listado']" class=" btn bgRosa pb-2"><i class="fa-solid fa-arrow-left fa-beat pt-0 me-3" style="color: #dfb9c6;"></i>Atras</button>
+        <h5 class="text-center">Editar Producto</h5>
+        <a href="#" [routerLink]="['/producto/listado']" type="button" class="btn btn-light bgRosa">
+            <i class="fa-solid fa-plus fa-beat" style="color: #dfb9c6;"></i> &nbsp; Nuevo Color
+        </a>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+
+        <div class="form-group">
+            <label for="idpro">id</label>
+            <input 
+                formControlName="idpro"
+                id="idpro" 
+                type="text" 
+                [(ngModel)]="producto.idpro"
+                class="form-control" readonly>
+           
+        </div>
+
+        <div class="form-group">
+            <label for="nompro">Modelo</label>
+            <input 
+                formControlName="nompro"
+                id="nompro" 
+                type="text" 
+                [(ngModel)]="producto.nompro"
+                class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="talla">Talla</label>
+            <select formControlName="idtalla" id="talla" class="form-control" [(ngModel)]="producto.talla.idtalla">
+                <option *ngFor="let talla of tallas"  [value]="talla.idtalla">{{ talla.talla }}</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="color">Color</label>
+            <select formControlName="idcolor" id="color" class="form-control" [(ngModel)]="producto.color.idcolor" >
+                <option *ngFor="let color of colores" [value]="color.idcolor">{{ color.color }}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="categoria">Categoria</label>
+            <input 
+                formControlName="categoria"
+                id="categoria" 
+                type="text" 
+                [(ngModel)]="producto.categoria"
+                class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="temporada">Temporada</label>
+            <input 
+                formControlName="temporada"
+                id="temporada" 
+                type="text" 
+                [(ngModel)]="producto.temporada"
+                class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="descripcion">Descripcion</label>
+            <input 
+                formControlName="descripcion"
+                id="descripcion" 
+                type="text" 
+                [(ngModel)]="producto.descripcion"
+                class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="precio">Precio</label>
+            <input 
+                formControlName="precio"
+                id="precio" 
+                type="text" 
+                [(ngModel)]="producto.precio"
+                class="form-control">
+        </div>
+        
+
+        <div class="form-group pt-3">
+            <input type="submit" value="Actualizar" class="btn bgRosa w-100" />
+        </div>
+    </form>
+</div>

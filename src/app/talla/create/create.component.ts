@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ColorService } from '../color.service';
+import { TallaService } from '../talla.service';
 import { Router } from '@angular/router';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { HeaderComponent } from '../../pages/header/header.component';
 import { RouterModule } from '@angular/router';
-
 
 @Component({
   selector: 'app-create',
@@ -14,19 +13,17 @@ import { RouterModule } from '@angular/router';
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.css','../../app.component.css']
 })
-
-export class CreateComponentColor {
-
+export class CreateComponentTalla {
   form!: FormGroup;
 
   constructor(
-    public colorService: ColorService,
+    public tallaService: TallaService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      color: new FormControl('', [Validators.required]),
+      talla: new FormControl('', [Validators.required]),
     });
   }
 
@@ -35,12 +32,10 @@ export class CreateComponentColor {
   }
 
   submit(){
-    
     console.log(this.form.value);
-    this.colorService.save(this.form.value).subscribe((res:any) => {
-         console.log('Color created successfully!');
-         this.router.navigateByUrl('color/listado');
+    this.tallaService.save(this.form.value).subscribe((res:any) => {
+         console.log('Talla created successfully!');
+         this.router.navigateByUrl('talla/listado');
     })
   }
-
 }

@@ -1,0 +1,74 @@
+<app-header />
+<div class="container">
+    <h3 class="text-center mt-5 pb-4 mb-4 border-bottom">Mantenimiento</h3>
+
+    <div class="d-flex justify-content-between align-items-center  pb-4 mb-4 border-bottom">
+        <button href="#" [routerLink]="['/producto/listado']" class=" btn bgRosa pb-2"><i class="fa-solid fa-arrow-left fa-beat pt-0 me-3" style="color: #dfb9c6;"></i>Atras</button>
+        <h5 class="text-center">Nuevo Color</h5>
+        <div style="visibility: hidden;">
+            <button href="#" [routerLink]="['/producto/listado']" class=" btn bgRosa pb-2"><i class="fa-solid fa-arrow-left fa-beat pt-0 me-3" style="color: #dfb9c6;"></i>Atras</button>
+        </div>
+    </div>
+  
+    
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="form-group">
+            <label for="nompro">Modelo</label>
+            <input 
+                formControlName="nompro"
+                id="nompro" 
+                type="text" 
+                class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="talla">Talla</label>
+            <select formControlName="idtalla" id="talla" class="form-control" >
+                <option *ngFor="let talla of tallas"  [value]="talla.idtalla">{{ talla.talla }}</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="color">Color</label>
+            <select formControlName="idcolor" id="color" class="form-control" >
+                <option *ngFor="let color of colores" [value]="color.idcolor">{{ color.color }}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="categoria">Categoria</label>
+            <input 
+                formControlName="categoria"
+                id="categoria" 
+                type="text" 
+                class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="temporada">Temporada</label>
+            <input 
+                formControlName="temporada"
+                id="temporada" 
+                type="text" 
+                class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="descripcion">Descripcion</label>
+            <input 
+                formControlName="descripcion"
+                id="descripcion" 
+                type="text" 
+                class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="precio">Precio</label>
+            <input 
+                formControlName="precio"
+                id="precio" 
+                type="text" 
+                class="form-control">
+        </div>
+        <div class="form-group pt-3">
+            <input type="submit" value="Guardar" class="btn bgRosa w-100" />
+        </div>
+       
+    </form>
+</div>

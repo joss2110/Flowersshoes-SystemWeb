@@ -1,38 +1,38 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ColorService } from '../color.service';
+import { TallaService } from '../talla.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Color } from '../color';
+import { Talla } from '../talla';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 @Component({
-  selector: 'app-edit-color',
+  selector: 'app-edit-talla',
   standalone: true,
   imports: [CommonModule, RouterModule, ReactiveFormsModule],
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.css','../../app.component.css']
 })
-export class EditComponentColor {
+export class EditComponentTalla {
 
-  idcolor!: number;
-  color!: Color;
+  idtalla!: number;
+  talla!: Talla;
   form!: FormGroup;
 
   constructor(
-    public colorService: ColorService,
+    public tallaService: TallaService,
     private route: ActivatedRoute,
     private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.idcolor = this.route.snapshot.params['colorId'];
-    this.colorService.find(this.idcolor).subscribe((data: Color)=>{
-      this.color = data;
+    this.idtalla = this.route.snapshot.params['tallaId'];
+    this.tallaService.find(this.idtalla).subscribe((data: Talla)=>{
+      this.talla = data;
     }); 
 
     this.form = new FormGroup({
-      idcolor: new FormControl('', [Validators.required]),
-      color: new FormControl('', Validators.required)
+      idtalla: new FormControl('', [Validators.required]),
+      talla: new FormControl('', Validators.required)
     });
   }
 
@@ -42,9 +42,9 @@ export class EditComponentColor {
 
   submit(){
     console.log(this.form.value);
-    this.colorService.save(this.form.value).subscribe((res:any) => {
-         console.log('Color updated successfully!');
-         this.router.navigateByUrl('color/listado');
+    this.tallaService.save(this.form.value).subscribe((res:any) => {
+         console.log('talla updated successfully!');
+         this.router.navigateByUrl('talla/listado');
     })
   }
 
