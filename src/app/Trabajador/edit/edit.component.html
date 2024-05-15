@@ -1,0 +1,114 @@
+<div class="container">
+    <h3 class="text-center mt-5 pb-4 mb-4 border-bottom">Mantenimiento</h3>
+
+    <div class="d-flex justify-content-between align-items-center pb-4 mb-4 border-bottom">
+        <button href="#" [routerLink]="['/trabajador/listado']" class="btn bgRosa pb-2"><i class="fa-solid fa-arrow-left fa-beat pt-0 me-3" style="color: #dfb9c6;"></i>Atras</button>
+        <h5 class="text-center">Editar Trabajador</h5>
+        <a href="#" [routerLink]="['/trabajador/create']" type="button" class="btn btn-light bgRosa">
+            <i class="fa-solid fa-plus fa-beat" style="color: #dfb9c6;"></i> &nbsp; Nuevo Trabajador
+        </a>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+
+        <div class="form-group">
+            <label for="idtra">ID</label>
+            <input 
+                formControlName="idtra"
+                id="idtra" 
+                type="text" 
+                [(ngModel)]="trabajador.idtra"
+                class="form-control" readonly>
+           
+        </div>
+
+        <div class="form-group">
+            <label for="nombres">Nombres</label>
+            <input 
+                formControlName="nombres"
+                id="nombres" 
+                type="text" 
+                [(ngModel)]="trabajador.nombres"
+                class="form-control">
+           
+        </div>
+
+        <div class="form-group">
+            <label for="tipodocumento">Tipo de Documento</label>
+            <input 
+                formControlName="tipodocumento"
+                id="tipodocumento" 
+                type="text" 
+                [(ngModel)]="trabajador.tipodocumento"
+                class="form-control">
+           
+        </div>
+
+        <div class="form-group">
+            <label for="nrodocumento">Número de Documento</label>
+            <input 
+                formControlName="nrodocumento"
+                id="nrodocumento" 
+                type="text" 
+                [(ngModel)]="trabajador.nrodocumento"
+                class="form-control">
+           
+        </div>
+
+        <div class="form-group">
+            <label for="direccion">Dirección</label>
+            <input 
+                formControlName="direccion"
+                id="direccion" 
+                type="text" 
+                [(ngModel)]="trabajador.direccion"
+                class="form-control">
+           
+        </div>
+
+        <div class="form-group">
+            <label for="rol">Rol</label>
+            <select formControlName="idrol" id="rol" class="form-control" [(ngModel)]="trabajador.rol.idrol">
+                <option *ngFor="let rol of roles"  [value]="rol.idrol">{{ rol.nomrol }}</option>
+            </select>
+           
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input 
+                formControlName="email"
+                id="email" 
+                type="email" 
+                [(ngModel)]="trabajador.email"
+                class="form-control">
+           
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input 
+                formControlName="password"
+                id="password" 
+                type="password" 
+                [(ngModel)]="trabajador.password"
+                class="form-control">
+           
+        </div>
+
+        <div class="form-group">
+            <label for="estado">Estado</label>
+            <input 
+                formControlName="estado"
+                id="estado" 
+                type="text" 
+                [(ngModel)]="trabajador.estado"
+                class="form-control">
+           
+        </div>
+
+        <div class="form-group pt-3">
+            <input type="submit" value="Actualizar" class="btn bgRosa w-100" />
+        </div>
+    </form>
+</div>

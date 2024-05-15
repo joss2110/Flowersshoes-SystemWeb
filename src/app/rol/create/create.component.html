@@ -1,0 +1,30 @@
+<app-header></app-header>
+<div class="container">
+  <h3 class="text-center mt-5 pb-4 mb-4 border-bottom">Mantenimiento</h3>
+
+  <div class="d-flex justify-content-between align-items-center pb-4 mb-4 border-bottom">
+    <button [routerLink]="['/rol/listado']" class="btn bgRosa pb-2">
+      <i class="fa-solid fa-arrow-left fa-beat pt-0 me-3" style="color: #dfb9c6;"></i>Atrás
+    </button>
+    <h5 class="text-center">Nuevo Rol</h5>
+    <!-- Placeholder para mantener el diseño simétrico -->
+    <div style="visibility: hidden;">
+      <button [routerLink]="['/rol/listado']" class="btn bgRosa pb-2">
+        <i class="fa-solid fa-arrow-left fa-beat pt-0 me-3" style="color: #dfb9c6;"></i>Atrás
+      </button>
+    </div>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="form-group">
+      <label for="nomrol">Nombre del Rol</label>
+      <input formControlName="nomrol" id="nomrol" type="text" class="form-control">
+      <div *ngIf="form.get('nomrol')?.invalid && form.get('nomrol')?.touched" class="text-danger">
+        Nombre del rol es requerido
+      </div>
+    </div>
+    <div class="form-group pt-3">
+      <input type="submit" value="Guardar" class="btn bgRosa w-100">
+    </div>
+  </form>
+</div>

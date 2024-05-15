@@ -1,3 +1,5 @@
+import { Rol } from "../rol/rol";
+
 export interface LoginResponse{
     code: string;
     error: string;
@@ -10,7 +12,7 @@ export interface Trabajador{
     tipodocumento: string;
     nrodocumento: string;
     direccion: string;
-    rol: string;
+    rol: Rol;
     email : string;
     password : string;
     estado : string;

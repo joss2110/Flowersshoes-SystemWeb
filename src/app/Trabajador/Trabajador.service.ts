@@ -11,20 +11,62 @@ import { Trabajador } from './Trabajador';
 })
 export class TrabajadorService{
 
-  
     private apiURL = "http://localhost:8092/trabajador/";
     
- 
     httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
     }
      
- 
     constructor(private httpClient: HttpClient) { }
-      
-   
+    
+    getAll(): Observable<any> {
+      const token = localStorage.getItem('token');
+      const headers = new HttpHeaders({
+        'Authorization': `${token}`
+      });
+      return this.httpClient.get(this.apiURL + 'listado', { headers: headers })
+        .pipe(
+          catchError(this.errorHandler)
+        );
+    }
+  
+    status(idtrabajador: number): Observable<any> {
+      const token = localStorage.getItem('token');
+      const headers = new HttpHeaders({
+        'Authorization': `${token}`
+      });
+      return this.httpClient.delete(this.apiURL + 'status/' + idtrabajador, { headers: headers })
+        .pipe(
+          catchError(this.errorHandler)
+        );
+    }
+  
+    save(trabajador: Trabajador): Observable<any> {
+      const token = localStorage.getItem('token');
+      const headers = new HttpHeaders({
+        'Authorization': `${token}`,
+        'Content-Type': 'application/json'
+      });
+      return this.httpClient.post(this.apiURL + 'save', JSON.stringify(trabajador), { headers: headers })
+        .pipe(
+          catchError(this.errorHandler)
+        );
+    }
+  
+    find(idtrabajador: number): Observable<any> {
+      const token = localStorage.getItem('token');
+      const headers = new HttpHeaders({
+        'Authorization': `${token}`,
+        'Content-Type': 'application/json'
+      });
+      return this.httpClient.get(this.apiURL + 'encontrar/' + idtrabajador, { headers: headers })
+        .pipe(
+          catchError(this.errorHandler)
+        );
+    }  
+    
     login(trabajador:Trabajador): Observable<LoginResponse> {
       const body = { email: trabajador.email, password: trabajador.password };
       localStorage.setItem('token','')

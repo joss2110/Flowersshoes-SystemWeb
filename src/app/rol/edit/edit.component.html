@@ -1,0 +1,39 @@
+<div class="container">
+    <h3 class="text-center mt-5 pb-4 mb-4 border-bottom">Mantenimiento</h3>
+
+    <div class="d-flex justify-content-between align-items-center pb-4 mb-4 border-bottom">
+        <button href="#" [routerLink]="['/rol/listado']" class="btn bgRosa pb-2">
+            <i class="fa-solid fa-arrow-left fa-beat pt-0 me-3" style="color: #dfb9c6;"></i>Atrás
+        </button>
+        <h5 class="text-center">Editar Rol</h5>
+        <a [routerLink]="['/rol/create']" class="btn btn-light bgRosa">
+            <i class="fa-solid fa-plus fa-beat" style="color: #dfb9c6;"></i> &nbsp; Nuevo Rol
+        </a>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+
+        <div class="form-group">
+            <label for="idrol">ID</label>
+            <input 
+                formControlName="idrol"
+                id="idrol" 
+                type="text" 
+                [(ngModel)]="rol.idrol"
+                class="form-control" readonly>
+        </div>
+
+        <div class="form-group">
+            <label for="nomrol">Nombre del Rol</label>
+            <input 
+                formControlName="nomrol"
+                id="nomrol" 
+                type="text" 
+                [(ngModel)]="rol.nomrol"
+                class="form-control">
+        </div>
+        <div class="form-group pt-3">
+            <input type="submit" value="Actualizar" class="btn bgRosa w-100" />
+        </div>
+    </form>
+</div>
